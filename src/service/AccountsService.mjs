@@ -42,6 +42,17 @@ export default class AccountsService {
         await this.#accounts.deleteOne({ _id: username });
         return account;
     }
+    async setRole(username, userRole){
+
+        const accountUpdated = await this.#accounts.findOneAndUpdate(
+            { _id: username },
+            { $set: { role: userRole } },
+            { upsert: true, new: true } );
+        if (!accountUpdated) {
+            throw getError(404, `account ${username} not found`);
+        }
+        return accountUpdated;
+    }
     #toAccountDB(account) {
         const accountDB = {};
         accountDB._id = account.username;

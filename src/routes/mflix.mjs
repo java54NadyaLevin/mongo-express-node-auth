@@ -7,7 +7,7 @@ import { DELETE_GET_COMMENT, MFLIX_COMMENTS, MFLIX_MOVIES_RATED } from '../confi
 export const mflix_route = express.Router();
 
 const mflixService = new MflixService(process.env.MONGO_URI, process.env.DB_NAME,
-    process.env.MOVIES_COLLECTION, process.env.COMMENTS_COLLECTION)
+    "movies", "comments")
 mflix_route.post(MFLIX_COMMENTS, asyncHandler(async (req, res) => {
     const commentDB = await mflixService.addComment(req.body);
     res.status(201).end(JSON.stringify(commentDB));

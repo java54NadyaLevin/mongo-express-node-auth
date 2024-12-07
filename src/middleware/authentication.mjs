@@ -16,9 +16,8 @@ export function auth(...skipRoutes) {
    return (req, res, next) => {
     if(!skipRoutes.includes(JSON.stringify({path:req.path, method: req.method})) ) {
         if (!req.user) {
-            throw getError(401, "");
+            throw getError(401, "string");
         }
-
     }
     next();
    }
