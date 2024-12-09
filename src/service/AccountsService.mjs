@@ -43,11 +43,10 @@ export default class AccountsService {
         return account;
     }
     async setRole(username, userRole){
-
         const accountUpdated = await this.#accounts.findOneAndUpdate(
             { _id: username },
             { $set: { role: userRole } },
-            { upsert: true, new: true } );
+            { upsert: true, returnDocument: 'after' } );
         if (!accountUpdated) {
             throw getError(404, `account ${username} not found`);
         }

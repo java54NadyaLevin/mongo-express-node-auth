@@ -1,7 +1,7 @@
 import express from 'express';
 export const accounts_route = express.Router();
 import asyncHandler from 'express-async-handler';
-import { ACCOUNTS_ACCOUNT, DELETE_GET_ACCOUNT, SET_ROLE } from '../config/pathes.mjs';
+import { ACCOUNTS_ACCOUNT, DELETE_GET_ACCOUNT} from '../config/pathes.mjs';
 import { accountsService } from '../app.mjs';
 import { getError } from '../errors/error.mjs';
 accounts_route.post(ACCOUNTS_ACCOUNT, asyncHandler(async (req, res) => {

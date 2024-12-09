@@ -6,7 +6,7 @@ import { schemaParams } from '../validation-schemas/schemas.mjs';
 import { DELETE_GET_COMMENT, MFLIX_COMMENTS, MFLIX_MOVIES_RATED } from '../config/pathes.mjs';
 export const mflix_route = express.Router();
 
-const mflixService = new MflixService(process.env.MONGO_URI, process.env.DB_NAME,
+const mflixService = new MflixService(process.env.MONGO_URI, "sample_mflix",
     "movies", "comments")
 mflix_route.post(MFLIX_COMMENTS, asyncHandler(async (req, res) => {
     const commentDB = await mflixService.addComment(req.body);

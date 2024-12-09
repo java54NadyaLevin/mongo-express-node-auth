@@ -15,7 +15,6 @@ export default class MflixService {
         this.#connection.closeConnection();
     }
     async addComment(commentDto) {
-
         const commentDB = this.#toComment(commentDto);
         const movie = await this.#moviesCollection.findOne({_id: commentDB.movie_id});
         if(!movie) {
