@@ -12,7 +12,7 @@ import rateLimit from 'express-rate-limit';
 
 const app = express();
 const port = process.env.PORT || 3500;
-export const accountsService = new AccountsService(process.env.MONGO_URI, "sample_mflix");
+export const accountsService = new AccountsService(process.env.MONGO_URI, process.env.DB_NAME);
 const server = app.listen(port);
 
 const limiter = rateLimit({
